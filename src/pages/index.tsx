@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
+import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
+  const { data } = trpc.useQuery(["hello", { text: "blah" }]);
+  console.log("index.tsx 6 data:", data);
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center">
       <div className="text-center text-2xl">Which Pokemon is rounder?</div>
